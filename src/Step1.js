@@ -1,4 +1,4 @@
-import React, { text } from "react";
+import React from "react";
 import { useForm } from "react-hook-form";
 import { withRouter } from "react-router-dom";
 import { useStateMachine } from "little-state-machine";
@@ -47,7 +47,7 @@ const Step1 = (props) => {
     formState: { errors }
   } = useForm();
 
-  const { actions, state } = useStateMachine({ updateAction });
+  const { actions } = useStateMachine({ updateAction });
 
   const onSubmit = (data) => {
     console.log("submit pressed");
@@ -55,32 +55,32 @@ const Step1 = (props) => {
   };
 
   return (
-    <>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <h2>Kohort Signup</h2>
-        <h2 style={{ fontSize: "18px" }}>
-          This is kohort signup form, exclusively for holders of a Trevarefest
-          2021 ticket. Contact hei@trevarefest.no for any questions and
-          technical issues.{" "}
-        </h2>
-        <h2>Step 1</h2>
-        <label>
-          Fill in your Unique QR Code on your ticket – purchased either via
-          Universe or Ticketmaster. On the Ticketmaster ticket use the number
-          under "Unummerert"
-        </label>
-        <label>QR code number:</label>
-        <input
-          {...register("ticketCode", {
-            required: true,
-            pattern: /^[a-zA-Z0-9_]{8,9}$/i
-          })}
-          // defaultValue={state.ticketCode}
-        />
-        {errors.ticketCode && <p>Ticket code invalid</p>}
-        <input type="submit" value="Validate QR code number" color="green" />
-      </form>
-    </>
+    <form onSubmit={handleSubmit(onSubmit)}>
+      <h2>Kohort Signup</h2>
+      <h2 style={{ fontSize: "18px" }}>
+        This is kohort signup form, exclusively for holders of a Trevarefest
+        2021 ticket. Contact hei@trevarefest.no for any questions and technical
+        issues.{" "}
+      </h2>
+      <h2>Step 1</h2>
+      <label>
+        Fill in your Unique QR Code on your ticket – purchased either via
+        Universe or Ticketmaster. On the Ticketmaster ticket use the number
+        under "Unummerert"
+      </label>
+      <label>QR code number:</label>
+      <input
+        {...register("ticketCode", {
+          required: true,
+          minLenght:4,
+          maxLength:9
+          // pattern: /^[a-zA-Z0-9_]{8,9}$/i
+        })}
+        // defaultValue={state.ticketCode}
+      />
+      {errors.ticketCode && <p>Ticket code invalid</p>}
+      <input type="submit" value="Validate QR code number" color="green" />
+    </form>
   );
 };
 
