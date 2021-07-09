@@ -1,0 +1,35 @@
+{
+  "name": "trevarefest-kohort-signup",
+  "version": "1.0.0",
+  "description": "",
+  "keywords": [],
+  "main": "src/index.js",
+  "dependencies": {
+    "@hookform/resolvers": "2.6.0",
+    "airtable": "0.11.1",
+    "little-state-machine": "4.1.2",
+    "react": "17.0.2",
+    "react-dom": "17.0.2",
+    "react-hook-form": "7.10.1",
+    "react-redux": "7.2.4",
+    "react-router-dom": "5.2.0",
+    "react-scripts": "4.0.3",
+    "yup": "0.32.9",
+    "yup-phone": "1.2.19"
+  },
+  "devDependencies": {
+    "typescript": "3.3.3"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
+}
