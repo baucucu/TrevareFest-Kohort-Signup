@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, {button, useEffect } from "react";
 import { useStateMachine } from "little-state-machine";
 import updateAction from "./updateAction";
 import {
@@ -22,6 +22,10 @@ const Used = (props) => {
   const { actions, state } = useStateMachine({ updateAction });
 
   let { code } = useParams();
+
+  function savePDF(){
+    
+  }
 
   async function getTicket(code) {
     base("Directory: Kohort Signups")
@@ -71,11 +75,11 @@ const Used = (props) => {
           <img
             alt="QR code"
             src={state.record.fields.QR[0].url}
-            width="240px"
+            width="100%"
           ></img>
-          <input type="submit" value="Save PDF" />
         </div>
       )}
+      <button onclick={()=>savePDF()} style={{width:"100%"}}>Save PDF</button>
     </>
   );
 };
