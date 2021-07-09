@@ -68,7 +68,7 @@ const Used = (props) => {
             <mark>{state.record.fields["Kohort Name"]}</mark>
           </h2>
           <h2>Use the following QR code</h2>
-          <img alt="QR code" src={props.url} width="100%"></img>
+          <img alt="QR code" src={state.record.fields.QR[0].url} width="100%"></img>
         </div>
       )}
     </>
