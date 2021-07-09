@@ -55,26 +55,28 @@ const Step1 = (props) => {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <h2>Kohort Signup</h2>
-      <h2 style={{ fontSize: "18px" }}>
-        This is kohort signup form, exclusively for holders of a Trevarefest
-        2021 ticket. Contact hei@trevarefest.no for any questions and technical
-        issues.{" "}
-      </h2>
-      <h2>Step 1</h2>
+    <>
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <h2>Kohort Signup</h2>
+        <h2 style={{ fontSize: "18px" }}>
+          This is kohort signup form, exclusively for holders of a Trevarefest
+          2021 ticket. Contact hei@trevarefest.no for any questions and
+          technical issues.{" "}
+        </h2>
+        <h2>Step 1</h2>
 
-      <label>QR code number:</label>
-      <input
-        {...register("ticketCode", {
-          required: true,
-          pattern: /^[a-zA-Z0-9_]{8,9}$/i
-        })}
-        // defaultValue={state.ticketCode}
-      />
-      {errors.ticketCode && <p>Ticket code invalid</p>}
-      <input type="submit" value="Validate QR code number" color="green" />
-    </form>
+        <label>QR code number:</label>
+        <input
+          {...register("ticketCode", {
+            required: true,
+            pattern: /^[a-zA-Z0-9_]{8,9}$/i
+          })}
+          // defaultValue={state.ticketCode}
+        />
+        {errors.ticketCode && <p>Ticket code invalid</p>}
+        <input type="submit" value="Validate QR code number" color="green" />
+      </form>
+    </>
   );
 };
 
