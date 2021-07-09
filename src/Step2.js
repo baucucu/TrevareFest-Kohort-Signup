@@ -61,8 +61,8 @@ const Step2 = (props) => {
         }
         records.forEach(function (record) {
           console.log("record updated: ", record.get("Code"));
+          props.history.push("./code/" + record.get("Code"));
         });
-        props.history.push("./result");
       }
     );
   }
@@ -91,7 +91,12 @@ const Step2 = (props) => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <label>Name of ticket holder</label>
+      <h2>QR code number: {state.record.fields.Code}</h2>
+      <h2>Name of ticket holder</h2>
+      <label>
+        You need to enter the name of the person who will use this festival
+        ticket.
+      </label>
       <input
         type="text"
         placeholder="Enter your name"
@@ -102,7 +107,11 @@ const Step2 = (props) => {
         })}
       />
       {errors.name && <p>Name is required</p>}
-      <label>Phone number</label>
+      <h2>Phone number</h2>
+      <label>
+        We need your phone number in case the health authorities needs to get in
+        contact with you.{" "}
+      </label>
       <input
         type="tel"
         placeholder="Enter your phone number"
@@ -113,7 +122,14 @@ const Step2 = (props) => {
         })}
       />
       {errors.phone && <p>Phone is required</p>}
-      <label>Kohort</label>
+      <h2>Kohort</h2>
+      <label>
+        See more information on the{" "}
+        <a style={{ color: "white" }} href="https://www.trevarefest.no/program">
+          festival program page
+        </a>{" "}
+        about the different Kohort schedules.{" "}
+      </label>
       <select {...register("kohort", { required: true })}>
         <option value={null}></option>
         {state?.kohorts &&
@@ -128,15 +144,25 @@ const Step2 = (props) => {
         <option value="Kohort 2">Kohort 2</option> */}
       </select>
       {errors.kohort && <p>Kohort is required</p>}
-      <label>GDPR agreement</label>
+      <h2>GDPR agreement</h2>
+      <label>
+        Please accept that Trevarefest (VAT Number 918118314; contact at
+        hei@trevarefest.no) can store the name and phone number of the ticket
+        holder for a maximum of up to two weeks after the festival. We are
+        storing this data in case the health authorities needs it in tracing a
+        corona virus outbreak.{" "}
+      </label>
       <input
-        style={{ display: "flex", marginTop: 20 }}
+        style={{ width: "auto" }}
         type="checkbox"
         placeholder="GDPR agreement"
         {...register("gdpr", {})}
       />
       {errors.gdpr && <p>GDPR agreement is required</p>}
-      <input type="submit" />
+      <label>
+        <span>Accept</span>
+        <input type="submit" value="Submit" />
+      </label>
     </form>
   );
 };
