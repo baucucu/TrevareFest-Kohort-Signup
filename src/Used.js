@@ -40,6 +40,14 @@ const Used = (props) => {
         }
         records.forEach(function (record) {
           console.log("Retrieved", record.id, " - ", record.get("Code"));
+          console.log(
+            "record fields: ",
+            JSON.stringify(Object.keys(record.fields))
+          );
+          console.log(
+            "QR image url: ",
+            JSON.stringify(record.fields.QR[0].url)
+          );
           actions.updateAction({
             record: record
           });
@@ -54,10 +62,19 @@ const Used = (props) => {
   return (
     <>
       {state.record && (
-        <h2>
-          Ticket code <mark>{code}</mark> is registered for{" "}
-          <mark>{state.record.fields["Kohort Name"]}</mark>
-        </h2>
+        <div>
+          <h2>
+            Ticket code <mark>{code}</mark> is registered for{" "}
+            <mark>{state.record.fields["Kohort Name"]}</mark>
+          </h2>
+          <h2>Use the following QR code</h2>
+          <img
+            alt="QR code"
+            src={state.record.fields.QR[0].url}
+            width="240px"
+          ></img>
+          <input type="submit" value="Save PDF" />
+        </div>
       )}
     </>
   );
