@@ -19,7 +19,12 @@ function App() {
       <img
         alt="TF21 logo"
         src="https://drive.google.com/uc?id=1G4kUkBNzDuAELOHk30KNcSaTn5HgimIZ"
-        style={{ width: "160px" }}
+        style={{
+          display: "block",
+          marginLeft: "auto",
+          marginRight: "auto",
+          width: "50%"
+        }}
       />
       <Router>
         <Route exact path="/" component={Step1} />
