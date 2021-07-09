@@ -1,44 +1,42 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no"
-    />
-    <meta name="theme-color" content="#000000" />
-    <!--
-      manifest.json provides metadata used when your web app is added to the
-      homescreen on Android. See https://developers.google.com/web/fundamentals/engage-and-retain/web-app-manifest/
-    -->
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <link rel="shortcut icon" href="./favicon.ico" />
-    <!--
-      Notice the use of %PUBLIC_URL% in the tags above.
-      It will be replaced with the URL of the `public` folder during the build.
-      Only files inside the `public` folder can be referenced from the HTML.
+import React from "react";
+import ReactDOM from "react-dom";
+import { BrowserRouter as Router, Route, useParams } from "react-router-dom";
+import { StateMachineProvider, createStore } from "little-state-machine";
+import Step1 from "./Step1";
+import Step2 from "./Step2";
+import Result from "./Result";
+import Invalid from "./Invalid";
+import Used from "./Used";
 
-      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
-      work correctly both with client-side routing and a non-root public URL.
-      Learn how to configure a non-root public URL by running `npm run build`.
-    -->
-    <title>Trevarefest 2021</title>
-  </head>
+import "./styles.css";
 
-  <body>
-    <noscript>
-      You need to enable JavaScript to run this app.
-    </noscript>
-    <div id="root"></div>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
+createStore({});
 
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
+function App() {
+  return (
+    <StateMachineProvider>
+      {/* <h1>Trevarefest 2021</h1> */}
+      <img
+        alt="TF21 logo"
+        src="https://drive.google.com/uc?id=1G4kUkBNzDuAELOHk30KNcSaTn5HgimIZ"
+        style={{
+          display: "block",
+          marginLeft: "auto",
+          marginRight: "auto",
+          width: "50%"
+        }}
+      />
+      <Router>
+        <Route exact path="/" component={Step1} />
+        <Route path="/step2" component={Step2} />
+        <Route path="/result" component={Result} />
+        <Route path="/invalid" component={Invalid} />
+        <Route path="/used" component={Used} />
+        <Route path="/code/:code" component={Used} />
+      </Router>
+    </StateMachineProvider>
+  );
+}
 
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
-  </body>
-</html>
+const rootElement = document.getElementById("root");
+ReactDOM.render(<App />, rootElement);
