@@ -6,6 +6,7 @@
   "main": "src/index.js",
   "dependencies": {
     "@hookform/resolvers": "2.6.0",
+    "@react-pdf/renderer": "2.0.16",
     "airtable": "0.11.1",
     "little-state-machine": "4.1.2",
     "react": "17.0.2",
