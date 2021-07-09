@@ -23,7 +23,7 @@ function App() {
           display: "block",
           marginLeft: "auto",
           marginRight: "auto",
-          width: "50%"
+          width: "160px"
         }}
       />
       <Router>
