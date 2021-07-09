@@ -63,9 +63,7 @@ const Used = (props) => {
       {state.record && (
         <div>
           <h2>
-            Ticket code <mark>{code}</mark> is registered for
-            {state.record.fields["Kohort Name"]}
-            <mark>{state.record.fields["Kohort Name"]}</mark>
+            Ticket code <mark>{code}</mark> is registered for <mark>{state.record.fields["Kohort Name"]}</mark>
           </h2>
           <h2>Use the following QR code</h2>
           <img alt="QR code" src={state.record.fields.QR[0].url} width="100%"></img>
