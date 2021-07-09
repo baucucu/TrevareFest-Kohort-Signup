@@ -58,7 +58,7 @@ const Step1 = (props) => {
     <form onSubmit={handleSubmit(onSubmit)}>
       <h2>Kohort Signup</h2>
       <h2>Step 1</h2>
-      <label>Ticket code:</label>
+      <label>QR code number:</label>
       <input
         {...register("ticketCode", {
           required: true,
