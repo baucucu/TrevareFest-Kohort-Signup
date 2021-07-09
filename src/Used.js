@@ -1,4 +1,4 @@
-import React, {button, useEffect } from "react";
+import React, { button, useEffect } from "react";
 import { useStateMachine } from "little-state-machine";
 import updateAction from "./updateAction";
 import {
@@ -23,9 +23,7 @@ const Used = (props) => {
 
   let { code } = useParams();
 
-  function savePDF(){
-    
-  }
+  function savePDF() {}
 
   async function getTicket(code) {
     base("Directory: Kohort Signups")
@@ -79,7 +77,12 @@ const Used = (props) => {
           ></img>
         </div>
       )}
-      <button onclick={()=>savePDF()} style={{width:"100%"}}>Save PDF</button>
+      <button
+        onclick={() => savePDF()}
+        style={{ backgroundColor: "teal", color: "white", width: "100%" }}
+      >
+        Save PDF
+      </button>
     </>
   );
 };
