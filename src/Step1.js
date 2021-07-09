@@ -1,4 +1,4 @@
-import React from "react";
+import React, { text } from "react";
 import { useForm } from "react-hook-form";
 import { withRouter } from "react-router-dom";
 import { useStateMachine } from "little-state-machine";
@@ -57,7 +57,13 @@ const Step1 = (props) => {
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <h2>Kohort Signup</h2>
+      <h2 style={{ fontSize: "18px" }}>
+        This is kohort signup form, exclusively for holders of a Trevarefest
+        2021 ticket. Contact hei@trevarefest.no for any questions and technical
+        issues.{" "}
+      </h2>
       <h2>Step 1</h2>
+
       <label>QR code number:</label>
       <input
         {...register("ticketCode", {
@@ -67,7 +73,7 @@ const Step1 = (props) => {
         // defaultValue={state.ticketCode}
       />
       {errors.ticketCode && <p>Ticket code invalid</p>}
-      <input type="submit" />
+      <input type="submit" value="Validate QR code number" color="green" />
     </form>
   );
 };
