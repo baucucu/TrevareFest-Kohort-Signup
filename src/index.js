@@ -15,8 +15,12 @@ createStore({});
 function App() {
   return (
     <StateMachineProvider>
-      <h1>TrevareFest 2021</h1>
-
+      {/* <h1>Trevarefest 2021</h1> */}
+      <img
+        alt="TF21 logo"
+        src="https://drive.google.com/uc?id=1G4kUkBNzDuAELOHk30KNcSaTn5HgimIZ"
+        style={{ width: "50%" }}
+      />
       <Router>
         <Route exact path="/" component={Step1} />
         <Route path="/step2" component={Step2} />
