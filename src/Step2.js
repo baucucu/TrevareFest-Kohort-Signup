@@ -91,7 +91,7 @@ const Step2 = (props) => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <h2>QR code number: {state.record.fields.Code}</h2>
+      <h2>QR code number: {state.ticketCode}</h2>
       <h2>Name of ticket holder</h2>
       <label>
         You need to enter the name of the person who will use this festival
