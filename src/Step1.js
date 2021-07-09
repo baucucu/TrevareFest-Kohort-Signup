@@ -64,7 +64,11 @@ const Step1 = (props) => {
           technical issues.{" "}
         </h2>
         <h2>Step 1</h2>
-
+        <label>
+          Fill in your Unique QR Code on your ticket – purchased either via
+          Universe or Ticketmaster. On the Ticketmaster ticket use the number
+          under "Unummerert"
+        </label>
         <label>QR code number:</label>
         <input
           {...register("ticketCode", {
