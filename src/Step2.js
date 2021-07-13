@@ -69,9 +69,13 @@ const Step2 = (props) => {
   }
 
   async function getKohorts() {
+    let view = "Available";
+    if (state?.ticketCode?.includes("@")) {
+      view = "Crew";
+    }
     base("Directory: Kohorts")
       .select({
-        view: state?.email ? "Crew" : "Available"
+        view: view
       })
       .firstPage(function (err, records) {
         if (err) {
