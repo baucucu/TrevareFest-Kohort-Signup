@@ -137,3 +137,10 @@ pre {
   color: white;
   white-space: pre;
 }
+
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 160px;
+}
