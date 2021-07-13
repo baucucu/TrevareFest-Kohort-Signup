@@ -7,6 +7,7 @@ import Step2 from "./Step2";
 import Result from "./Result";
 import Invalid from "./Invalid";
 import Used from "./Used";
+import Crew from "./Crew";
 
 import "./styles.css";
 
@@ -15,19 +16,11 @@ createStore({});
 function App() {
   return (
     <StateMachineProvider>
-      {/* <h1>Trevarefest 2021</h1> */}
-      <img
-        alt="TF21 logo"
-        src="https://drive.google.com/uc?id=1G4kUkBNzDuAELOHk30KNcSaTn5HgimIZ"
-        style={{
-          display: "block",
-          marginLeft: "auto",
-          marginRight: "auto",
-          width: "160px"
-        }}
-      />
+      <h1>TrevareFest 2021</h1>
+
       <Router>
         <Route exact path="/" component={Step1} />
+        <Route exact path="/crew" component={Crew} />
         <Route path="/step2" component={Step2} />
         <Route path="/result" component={Result} />
         <Route path="/invalid" component={Invalid} />
