@@ -30,6 +30,7 @@ const Step2 = (props) => {
   } = useForm(formOptions);
   // const { register, handleSubmit } = useForm();
   const { state, actions } = useStateMachine({ updateAction });
+
   const onSubmit = (data) => {
     console.log("data: ", data);
     actions.updateAction(data);
@@ -70,7 +71,7 @@ const Step2 = (props) => {
   async function getKohorts() {
     base("Directory: Kohorts")
       .select({
-        view: "Available"
+        view: state.email ? "Available" : "Grid view"
       })
       .firstPage(function (err, records) {
         if (err) {
@@ -91,12 +92,7 @@ const Step2 = (props) => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <h2>QR code number: {state.ticketCode}</h2>
-      <h2>Name of ticket holder</h2>
-      <label>
-        You need to enter the name of the person who will use this festival
-        ticket.
-      </label>
+      <label>Name of ticket holder</label>
       <input
         type="text"
         placeholder="Enter your name"
@@ -107,11 +103,7 @@ const Step2 = (props) => {
         })}
       />
       {errors.name && <p>Name is required</p>}
-      <h2>Phone number</h2>
-      <label>
-        We need your phone number in case the health authorities needs to get in
-        contact with you.{" "}
-      </label>
+      <label>Phone number</label>
       <input
         type="tel"
         placeholder="Enter your phone number"
@@ -122,14 +114,7 @@ const Step2 = (props) => {
         })}
       />
       {errors.phone && <p>Phone is required</p>}
-      <h2>Kohort</h2>
-      <label>
-        See more information on the{" "}
-        <a style={{ color: "white" }} href="https://www.trevarefest.no/program">
-          festival program page
-        </a>{" "}
-        about the different Kohort schedules.{" "}
-      </label>
+      <label>Kohort</label>
       <select {...register("kohort", { required: true })}>
         <option value={null}></option>
         {state?.kohorts &&
@@ -144,25 +129,15 @@ const Step2 = (props) => {
         <option value="Kohort 2">Kohort 2</option> */}
       </select>
       {errors.kohort && <p>Kohort is required</p>}
-      <h2>GDPR agreement</h2>
-      <label>
-        Please accept that Trevarefest (VAT Number 918118314; contact at
-        hei@trevarefest.no) can store the name and phone number of the ticket
-        holder for a maximum of up to two weeks after the festival. We are
-        storing this data in case the health authorities needs it in tracing a
-        corona virus outbreak.{" "}
-      </label>
+      <label>GDPR agreement</label>
       <input
-        style={{ width: "auto" }}
+        style={{ display: "flex", marginTop: 20 }}
         type="checkbox"
         placeholder="GDPR agreement"
         {...register("gdpr", {})}
       />
       {errors.gdpr && <p>GDPR agreement is required</p>}
-      <label>
-        <span>Accept</span>
-        <input type="submit" value="Submit" />
-      </label>
+      <input type="submit" />
     </form>
   );
 };
