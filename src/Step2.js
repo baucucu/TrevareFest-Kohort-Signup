@@ -71,7 +71,7 @@ const Step2 = (props) => {
   async function getKohorts() {
     base("Directory: Kohorts")
       .select({
-        view: state.email.indexOf("@") > -1 ? "Available" : "Crew"
+        view: state?.email ? "Crew" : "Available"
       })
       .firstPage(function (err, records) {
         if (err) {
