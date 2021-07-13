@@ -1,8 +1,16 @@
 import React, { useEffect } from "react";
-import { useForm } from "react-hook-form";
 import { useStateMachine } from "little-state-machine";
 import updateAction from "./updateAction";
-import { useParams } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  Redirect,
+  useParams,
+  useRouteMatch
+} from "react-router-dom";
+
 import { withRouter } from "react-router-dom";
 
 var Airtable = require("airtable");
@@ -32,14 +40,6 @@ const Used = (props) => {
         }
         records.forEach(function (record) {
           console.log("Retrieved", record.id, " - ", record.get("Code"));
-          console.log(
-            "record fields: ",
-            JSON.stringify(Object.keys(record.fields))
-          );
-          console.log(
-            "QR image url: ",
-            JSON.stringify(record.fields.QR[0].url)
-          );
           actions.updateAction({
             record: record
           });
@@ -48,26 +48,16 @@ const Used = (props) => {
       });
   }
 
-  const {
-    register,
-    handleSubmit
-    // formState: { errors }
-  } = useForm();
-
   useEffect(() => {
     getTicket(code);
   }, []);
-
   return (
     <>
       {state.record && (
-        <div>
-          <h2>
-            Ticket code <mark>{code}</mark> is registered for <mark>{state.record.fields["Kohort Name"]}</mark>
-          </h2>
-          <h2>Use the following QR code</h2>
-          <img alt="QR code" src={state.record.fields.QR[0].url} width="100%"></img>
-        </div>
+        <h2>
+          Ticket code <mark>{code}</mark> is registered for{" "}
+          <mark>{state.record.fields["Kohort Name"]}</mark>
+        </h2>
       )}
     </>
   );
