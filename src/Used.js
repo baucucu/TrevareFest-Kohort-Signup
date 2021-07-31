@@ -55,8 +55,9 @@ const Used = (props) => {
     <>
       {state.record && (
         <h2>
-          Ticket code <mark>{code}</mark> is registered for{" "}
-          <mark>{state.record.fields["Kohort Name"]}</mark>
+          Ticket code <mark>{code}</mark>
+          used by <mark>{state.record.fields.Name}</mark> 
+          is registered for <mark>{state.record.fields["Kohort Name"]}</mark>
         </h2>
       )}
     </>
